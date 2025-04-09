@@ -1,0 +1,54 @@
+import pygame
+
+pygame.init()
+
+WIDTH = 600
+HEIGHT = 600
+
+clr = (((100,30,100)))
+
+display_surface = pygame.display.set_mode((WIDTH, HEIGHT))
+
+curry = pygame.image.load("curry.png")
+curry = pygame.transform.scale(curry, (100, 100))
+
+thompson = pygame.image.load("thompson.jpg")
+thompson = pygame.transform.scale(thompson, (100, 100))
+
+harden = pygame.image.load("harden.png")
+harden = pygame.transform.scale(harden, (100, 100))
+
+james = pygame.image.load("Lebron-James-PNG-Clipart.png")
+james = pygame.transform.scale(james, (100, 100))
+
+
+display_surface.blit(thompson, (100,20))
+display_surface.blit(harden, (100,140))
+display_surface.blit(james, (100,260))
+display_surface.blit(curry, (100,380))
+font = pygame.font.SysFont("Times New Roman", 35)
+text = font.render("LeBron James", True,(255,255,255))
+text2 = font.render("James Harden", True,(255,255,255))
+text3 = font.render("Klay Thompson", True,(255,255,255))
+text4 = font.render("Stephen Currry", True,(255,255,255))
+display_surface.blit(text, (300,20))
+display_surface.blit(text2, (300,140))
+display_surface.blit(text3, (300,260))
+display_surface.blit(text4, (300,380))
+pygame.display.update()
+
+while 1:
+    event = pygame.event.poll()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit(0)
+    if event.type == pygame.MOUSEBUTTONDOWN:
+        pos = pygame.mouse.get_pos()
+        pygame.draw.circle(display_surface, ((clr)) ,(pos), 20, 0)
+        pygame.display.update()
+    elif event.type == pygame.MOUSEBUTTONDOWN:
+        pos2 = pygame.mouse.get_pos()
+        pygame.draw.line(display_surface,((clr)), (pos), (pos2),5)
+        pygame.draw.circle(display_surface, ((clr)), (pos2), 20, 0)
+        pygame.display.update()
